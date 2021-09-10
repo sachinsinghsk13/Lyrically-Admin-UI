@@ -1,0 +1,18 @@
+.sidebar {
+    width: 200px;
+    background-color: #000;
+    height: 100vh;
+    position: fixed;
+}
+
+.sidebar .top-content img {
+    width: 60px;
+    height: 60px;
+}
+
+.sidebar .bottom-content {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+}

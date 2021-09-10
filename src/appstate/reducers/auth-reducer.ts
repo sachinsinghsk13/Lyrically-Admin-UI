@@ -1,4 +1,4 @@
-import { Action, AnyAction } from "redux";
+import { AnyAction } from "redux";
 
 const initialState =  {
     isAuthenticated: false,

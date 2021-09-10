@@ -7,7 +7,7 @@ import store from './appstate/store';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import interceptorMap, { authorizationTokenInterceptor } from './utils/http-interceptor';
+import { authorizationTokenInterceptor } from './utils/http-interceptor';
 
 setupHttpInterceptors();
 ReactDOM.render(

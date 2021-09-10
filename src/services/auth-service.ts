@@ -3,11 +3,6 @@ import store from '../appstate/store';
 import { LoginCredentials, LoginResponse, User } from '../models/authentication-model';
 import Constants from '../utils/Constants';
 
-export interface AuthenticationResponse {
-    token: string;
-    user: any;
-}
-
 class AuthenticationService {
 
     public isAuthenticated: boolean = false;
@@ -46,7 +41,7 @@ class AuthenticationService {
     tryAuthenticationFromLocalStorage() {
         let localAuthentication: string | null = window.localStorage.getItem(Constants.LOCAL_STORAGE_AUTH_DATA_KEY);
         if (localAuthentication) {
-           let authData: AuthenticationResponse = JSON.parse(localAuthentication);
+           let authData: LoginResponse = JSON.parse(localAuthentication);
            this.accessToken = authData.token;
            this.isAuthenticated = true;
            this.userInfo = authData.user;
