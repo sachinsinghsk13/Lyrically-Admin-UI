@@ -5,13 +5,14 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProtectedRoute from './components/auth-components/ProtectedRoute';
 import authService from './services/auth-service';
 import Home from './components/layout/Test';
+import LoginRoute from './components/auth-components/LoginRoute';
 
 function App() {
   console.log(Constants.BASE_URL);
   return (
     <Router>
       <Switch>
-        <Route path="/login" component={AdminLogin} />
+        <LoginRoute path="/login" component={AdminLogin} />
         <ProtectedRoute path="/" component={Home} />
       </Switch>
     </Router>
