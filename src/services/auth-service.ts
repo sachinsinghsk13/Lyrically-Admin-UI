@@ -6,7 +6,7 @@ import Constants from '../utils/Constants';
 class AuthenticationService {
 
     public isAuthenticated: boolean = false;
-    public accessToken: string | undefined = undefined; 
+    public accessToken: string | undefined = undefined;
     public userInfo: User | undefined = undefined;
     constructor() {
         this.tryAuthenticationFromLocalStorage();
@@ -41,10 +41,14 @@ class AuthenticationService {
     tryAuthenticationFromLocalStorage() {
         let localAuthentication: string | null = window.localStorage.getItem(Constants.LOCAL_STORAGE_AUTH_DATA_KEY);
         if (localAuthentication) {
-           let authData: LoginResponse = JSON.parse(localAuthentication);
-           this.accessToken = authData.token;
-           this.isAuthenticated = true;
-           this.userInfo = authData.user;
+            let authData: LoginResponse = JSON.parse(localAuthentication);
+            store.dispatch({
+                type: 'authentication/loggedIn',
+                payload: authData
+            });
+            this.accessToken = authData.token;
+            this.isAuthenticated = true;
+            this.userInfo = authData.user;
         }
     }
 }
