@@ -7,7 +7,6 @@ const menuToggle = (ref: React.RefObject<HTMLLIElement>) => {
 };
 
 const SidebarMenu = (props: any) => {
-    console.log(props);
     const ref = React.createRef<HTMLLIElement>();
     const menu: MenuItem = props.menu;
     return (
