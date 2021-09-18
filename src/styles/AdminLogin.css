@@ -6,6 +6,6 @@
     background: linear-gradient(to right, #ffc3a0, #FFAFBD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
 }
 
-.row {
+.row.admin-login-row {
     min-height: 100vh;
 }

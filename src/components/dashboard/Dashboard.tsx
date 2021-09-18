@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import DashboardCard from "./DashboardCard";
 
 export const Dashboard = (props: any) => {
@@ -6,26 +6,38 @@ export const Dashboard = (props: any) => {
     return (
         <Container fluid className="p-2">
             <Row>
+                <Col>
+                    <Breadcrumb>
+                        <Breadcrumb.Item href="/dashboard" active>Dashboard</Breadcrumb.Item>
+                    </Breadcrumb>
+                </Col>
+            </Row>
+            <Row>
+                <Col lg="12" className="p-2">
+                    <h4>Dashboard</h4>
+                </Col>
+            </Row>
+            <Row>
                 <Col lg="4" md="3">
-                    <DashboardCard/>
+                    <DashboardCard />
                 </Col>
                 <Col lg="4" md="3">
-                    <DashboardCard/>
+                    <DashboardCard />
                 </Col>
                 <Col lg="4" md="3">
-                    <DashboardCard/>
+                    <DashboardCard />
                 </Col>
                 <Col lg="4" md="3">
-                    <DashboardCard/>
+                    <DashboardCard />
                 </Col>
                 <Col lg="4" md="3">
-                    <DashboardCard/>
+                    <DashboardCard />
                 </Col>
                 <Col lg="4" md="3">
-                    <DashboardCard/>
+                    <DashboardCard />
                 </Col>
                 <Col lg="4" md="3">
-                    <DashboardCard/>
+                    <DashboardCard />
                 </Col>
             </Row>
         </Container>

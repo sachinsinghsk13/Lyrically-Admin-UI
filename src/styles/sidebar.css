@@ -1,12 +1,5 @@
 /* Google Fonts Import Link */
-@import url('https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
 .sidebar{
   position: fixed;
   top: 0;
@@ -75,7 +68,7 @@
 .sidebar.close .nav-links li .iocn-link{
   display: block
 }
-.sidebar .nav-links li i{
+.sidebar .nav-links li i {
   height: 50px;
   min-width: 78px;
   text-align: center;
@@ -84,6 +77,13 @@
   font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.sidebar .nav-links li .logout-div i {
+  line-height: normal;
+  height: auto;
+  min-width: auto;
+  padding: 0 0.3rem;
 }
 .sidebar .nav-links li.showMenu i.arrow{
   transform: rotate(-180deg);
@@ -212,7 +212,7 @@
 }
 .sidebar.close .profile-details button,
 .sidebar.close .profile-details .profile_name,
-.sidebar.close .profile-details .job{
+.sidebar.close .profile-details .job {
   display: none;
 }
 .sidebar .profile-details .job{

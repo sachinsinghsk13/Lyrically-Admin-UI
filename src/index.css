@@ -1,4 +1,10 @@
-body, div#root {
+@import url("https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css");
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+@import url("/node_modules/bootstrap-icons/font/bootstrap-icons.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }

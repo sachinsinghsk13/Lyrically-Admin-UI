@@ -6,8 +6,8 @@ import Constants from '../utils/Constants';
 class AuthenticationService {
 
     public isAuthenticated: boolean = false;
-    public accessToken: string | undefined = undefined;
-    public userInfo: User | undefined = undefined;
+    public accessToken: string | null = null;
+    public userInfo: User | null = null;
     constructor() {
         this.tryAuthenticationFromLocalStorage();
     }
@@ -38,7 +38,17 @@ class AuthenticationService {
         return this.isAuthenticated;
     }
 
-    tryAuthenticationFromLocalStorage() {
+    /**
+     * Logs out the currently logged in user. clears the localstorage credentials and redirect to login page
+     */
+    logout() {
+        window.localStorage.removeItem(Constants.LOCAL_STORAGE_AUTH_DATA_KEY);
+        this.isAuthenticated = false;
+        this.accessToken = null;
+        this.userInfo = null;
+    }
+
+    private tryAuthenticationFromLocalStorage() {
         let localAuthentication: string | null = window.localStorage.getItem(Constants.LOCAL_STORAGE_AUTH_DATA_KEY);
         if (localAuthentication) {
             let authData: LoginResponse = JSON.parse(localAuthentication);

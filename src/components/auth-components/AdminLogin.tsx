@@ -21,14 +21,14 @@ export default function AdminLogin(props: any) {
     const handleAdminLogin = async (credentials: LoginCredentials) => {
         let result = await authService.login(credentials);
         if (result) {
-            history.push('/home');
+            history.push('/dashboard');
         } else {
             console.log("login failed");
         }
     }   
     return (
         <Container fluid className="admin-login-container">
-            <Row className="justify-content-center">
+            <Row className="justify-content-center admin-login-row">
                 <Col sm={12} md={8} lg={6} xl={4} className="d-flex align-items-center justify-content-center">
                     <div className="bg-white p-3 w-100 rounded">
                         <div className="d-flex justify-content-center">
