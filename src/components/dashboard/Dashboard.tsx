@@ -14,7 +14,7 @@ export const Dashboard = (props: any) => {
             </Row>
             <Row>
                 <Col lg="12" className="p-2">
-                    <h4>Dashboard</h4>
+                    <h2>Dashboard</h2>
                 </Col>
             </Row>
             <Row>
