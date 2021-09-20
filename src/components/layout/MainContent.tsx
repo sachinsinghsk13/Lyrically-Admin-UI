@@ -3,6 +3,7 @@ import '../../styles/main-content.css';
 import { Dashboard } from '../dashboard/Dashboard';
 import PageNotFound from '../navigation/PageNotFound';
 import NavigationMenuList from '../settings/navigation-settings/NavigationMenuList';
+import NavigationSettings from '../settings/navigation-settings/NavigationSettings';
 export default function MainContent(props: any) {
     let { path, url } = useRouteMatch();
     console.log(path, url);
@@ -11,7 +12,7 @@ export default function MainContent(props: any) {
             <Switch>
                 <Redirect exact path="/" to="/dashboard"/>
                 <Route path="/dashboard" component={Dashboard}/>
-                <Route path="/navigation-settings" component={NavigationMenuList}/>
+                <Route path="/navigation-settings" component={NavigationSettings}/>
                 <Route path="/" component={PageNotFound}/>
             </Switch>
         </div>

@@ -19,7 +19,7 @@ const Sidebar = (props: any) => {
     const fetchMenus = async () => {
       let menus = await axios.get(`${Constants.BASE_URL}/admin/webmenus`);
       if (menus.status === 200) {
-        setMenus(menus.data.data);
+        setMenus(menus.data);
       }
     };
     fetchMenus();
