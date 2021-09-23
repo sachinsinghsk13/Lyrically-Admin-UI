@@ -62,17 +62,19 @@ const Sidebar = (props: any) => {
 export default Sidebar;
 
 export interface SubmenuItem {
-  _id: number;
+  _id?: number;
   title: string;
-  icon: string;
+  icon?: string;
+  order: number;
   path: string;
 }
 
 export interface MenuItem {
-  _id: number;
+  _id?: number;
   title: string;
   path: string,
-  icon: string,
+  order: number;
+  icon?: string,
   hasSubmenu: boolean;
   submenu: SubmenuItem[]
 }

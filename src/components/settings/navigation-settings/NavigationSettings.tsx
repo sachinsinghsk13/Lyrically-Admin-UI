@@ -7,7 +7,7 @@ import NavigationMenuList from "./NavigationMenuList";
 const NavigationSettings = (props: any) => {
     const { path, url } = useRouteMatch();
     return (
-        <Container fluid className="p-2">
+        <Container className="p-2">
             <Row>
                 <Col>
                     <Breadcrumb>
