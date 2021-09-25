@@ -11,6 +11,7 @@ function toggleState(current: string): string {
 }
 
 const Sidebar = (props: any) => {
+  const sidebar = useSelector<any, any>(state => state.sidebar);
   const [sidebarState, setSidebarState] = useState('close');
   const [logoutModalShow, setLogoutModalShow] = useState(false);
   const [menus, setMenus] = useState<MenuItem[]>([]);
@@ -26,11 +27,7 @@ const Sidebar = (props: any) => {
   }, []);
 
   return (
-    <div className={`sidebar ${sidebarState === 'close' ? 'close' : ''}`}>
-      <div className="logo-details">
-        <i className='bx bx-menu' onClick={() => { setSidebarState(toggleState(sidebarState)); props.onSidebarToggle(toggleState(sidebarState)) }}></i>
-        <span className="logo_name">{sidebarData.title}</span>
-      </div>
+    <div className={`sidebar ${sidebar.isOpen? '' : 'close'}`}>
       <ul className="nav-links">
         {menus.map(menu => <SidebarMenu menu={menu} key={menu._id} />)}
         <li>
