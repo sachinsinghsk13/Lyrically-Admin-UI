@@ -1,12 +1,14 @@
 import { Col, Row } from "react-bootstrap"
 import { Link } from "react-router-dom";
-import { useRouteMatch } from 'react-router';
+import { useHistory, useRouteMatch } from 'react-router';
 import { useEffect } from "react";
 import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
 import BSForm from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import * as Yup from 'yup';
 import { MenuItem } from "../../navigation/Sidebar";
+import axios from "axios";
+import Constants from "../../../utils/Constants";
 
 const schema = Yup.object().shape({
     title: Yup.string().required('Menu title is required'),
@@ -31,19 +33,29 @@ const initialValues: MenuItem = {
     submenu: []
 };
 
-const handleSubmit = (values: any) => {
-    console.log(values);
 
-};
 
 
 const NavigationMenuForm = (props: any) => {
     const { path } = useRouteMatch();
+    const history = useHistory();
     useEffect(() => {
         const prevTitle = document.title;
         document.title = "Add New Menu";
         return () => { document.title = prevTitle };
     }, []);
+
+    const handleSubmit = async (values: any) => {
+        let resp = await axios.post(`${Constants.BASE_URL}/admin/webmenus`,values);
+        if (resp.status === 201) {
+            console.log('saved');
+            console.log(resp);
+            history.push(`${path.substr(0, path.lastIndexOf('/'))}/menus-list`)
+        } else {
+            console.log(resp);
+        }
+    };
+
     return (
         <>
             <Row>
@@ -126,6 +138,7 @@ const NavigationMenuForm = (props: any) => {
                                                                             <i className="fas fa-minus btn btn-danger mx-1"
                                                                                 onClick={() => arrayHelpers.remove(index)}></i>
                                                                         </td>
+                                                                        <td><Field type="hidden" name={`submenu[${index}].order`} value={index}/></td>
                                                                     </tr>
                                                                 ))}
                                                             </tbody>
