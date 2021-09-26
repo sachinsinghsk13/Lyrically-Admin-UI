@@ -1,4 +1,5 @@
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+import LogoutIcon from '@mui/icons-material/Logout';
 import Button from '@mui/material/Button';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -21,18 +22,12 @@ const LogoutConfirmationModal = (props: any) => {
             aria-describedby="alert-dialog-description"
         >
             <DialogTitle id="alert-dialog-title">
-                {"Use Google's location service?"}
+                {"Are you sure you want to logout?"}
             </DialogTitle>
-            <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    Let Google help apps determine location. This means sending anonymous
-                    location data to Google, even when no apps are running.
-                </DialogContentText>
-            </DialogContent>
             <DialogActions>
-                <Button onClick={props.onHide()}>Disagree</Button>
-                <Button variant="contained" color="error" onClick={handleLogout} autoFocus>
-                    Agree
+                <Button onClick={props.onHide} variant="text" color="secondary">Cancel</Button>
+                <Button variant="contained" color="error" onClick={handleLogout} autoFocus endIcon={<LogoutIcon/>}>
+                    Logout
                 </Button>
             </DialogActions>
         </Dialog>
