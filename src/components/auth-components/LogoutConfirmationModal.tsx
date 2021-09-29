@@ -1,7 +1,6 @@
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+import { Dialog, DialogActions, DialogTitle } from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
 import Button from '@mui/material/Button';
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { AnyAction } from "redux";

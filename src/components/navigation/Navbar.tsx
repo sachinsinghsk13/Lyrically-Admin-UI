@@ -1,8 +1,6 @@
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
-import { Container, Nav } from "react-bootstrap";
-import Navbar from 'react-bootstrap/Navbar';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, } from "react-redux";
 
 export default function AppNavbar(props: any) {
     const dispatch = useDispatch();
