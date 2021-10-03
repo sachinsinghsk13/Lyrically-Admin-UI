@@ -1,7 +1,8 @@
-import { Breadcrumbs, Card, Divider, Grid, Paper, Typography } from "@mui/material";
+import { Breadcrumbs, Card, Divider, Grid, Paper, Skeleton, Typography } from "@mui/material";
+import { useSnackbar } from "notistack";
 
 export const Dashboard = (props: any) => {
-    console.log('dash')
+    // const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     return (
         <Grid p={2}>
             <Grid py={2} item lg={12}>
@@ -13,13 +14,7 @@ export const Dashboard = (props: any) => {
                 <Paper sx={{p: 2}}  elevation={1} square>
                     <Typography variant="h5">Dashboard</Typography>
                     <Divider/>
-                    <Grid container>
-                        <Grid item lg={4}>
-                            <Card sx={{display: 'flex', my: 2, p: 2}}>
-                                <Typography>ok</Typography>
-                            </Card>
-                        </Grid>
-                    </Grid>
+                        <Skeleton variant="text"></Skeleton>
                 </Paper>
             </Grid>
         </Grid>

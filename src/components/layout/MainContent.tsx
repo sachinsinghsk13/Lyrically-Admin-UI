@@ -1,11 +1,9 @@
-import { Redirect, Route, Switch, useRouteMatch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import '../../styles/main-content.css';
 import { Dashboard } from '../dashboard/Dashboard';
 import PageNotFound from '../navigation/PageNotFound';
 import NavigationSettings from '../settings/navigation-settings/NavigationSettings';
 export default function MainContent(props: any) {
-    let { path, url } = useRouteMatch();
-    console.log(path, url);
     return (
         <div  className="main-content p-2">
             <Switch>

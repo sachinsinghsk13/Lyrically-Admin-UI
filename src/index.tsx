@@ -7,14 +7,17 @@ import store from './appstate/store';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 import { authorizationTokenInterceptor } from './utils/http-interceptor';
+import { SnackbarProvider } from 'notistack';
+import { ConfirmProvider } from 'material-ui-confirm';
 setupHttpInterceptors();
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <ThemeProvider theme={theme}> */}
-        <App/>
-      {/* </ThemeProvider> */}
-      
+      <SnackbarProvider maxSnack={3}>
+        <ConfirmProvider>
+          <App />
+        </ConfirmProvider>
+      </SnackbarProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
@@ -24,4 +27,4 @@ reportWebVitals();
 
 function setupHttpInterceptors() {
   axios.interceptors.request.use(authorizationTokenInterceptor);
-} 
+}

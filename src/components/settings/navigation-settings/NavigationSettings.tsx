@@ -5,7 +5,7 @@ import NavigationMenuForm from "./NavigationMenuForm";
 import NavigationMenuList from "./NavigationMenuList";
 
 const NavigationSettings = (props: any) => {
-    const { path, url } = useRouteMatch();
+    const { path } = useRouteMatch();
     return (
         <Grid container p={2}>
             <Grid item lg={12} py={2}>
@@ -18,28 +18,10 @@ const NavigationSettings = (props: any) => {
             <Switch>
                  <Route path={`${path}/menus-list`} component={NavigationMenuList}/>
                  <Route path={`${path}/add-menu`} component={NavigationMenuForm}/>
+                 <Route path={`${path}/update-menu/:id`} component={NavigationMenuForm}/>
                  <Redirect path={path} exact to={`${path}/menus-list`}/>
             </Switch>
         </Grid >
-
-        // <Container className="p-2">
-        //     <Row>
-        //         <Col>
-        //         <Breadcrumbs>
-        //             <Typography color="text.primary">Dashboard</Typography>
-        //         </Breadcrumbs>
-        //             <Breadcrumb>
-        //                 <Breadcrumb.Item href="/settings">Settings</Breadcrumb.Item>
-        //                 <Breadcrumb.Item href="/navigation-settings" active>Navigation Menu Settings</Breadcrumb.Item>
-        //             </Breadcrumb>
-        //         </Col>
-        //     </Row>
-        //     <Switch>
-        //         <Route path={`${path}/menus-list`} component={NavigationMenuList}/>
-        //         <Route path={`${path}/add-menu`} component={NavigationMenuForm}/>
-        //         <Redirect path={path} exact to={`${path}/menus-list`}/>
-        //     </Switch>
-        // </Container>
     );
 }
 
