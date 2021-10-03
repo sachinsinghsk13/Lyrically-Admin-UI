@@ -1,17 +1,13 @@
 import { useEffect, useState } from 'react';
 import '../../styles/sidebar.css'
-import sidebarData from '../../data/sidebar';
 import SidebarMenu from './SidebarMenu';
 import axios from 'axios';
 import Constants from '../../utils/Constants';
 import { useSelector } from 'react-redux';
+import Button from '@mui/material/Button';
 import LogoutConfirmationModal from '../auth-components/LogoutConfirmationModal';
-function toggleState(current: string): string {
-  return current === 'close' ? 'open' : 'close';
-}
-
 const Sidebar = (props: any) => {
-  const [sidebarState, setSidebarState] = useState('close');
+  const sidebar = useSelector<any, any>(state => state.sidebar);
   const [logoutModalShow, setLogoutModalShow] = useState(false);
   const [menus, setMenus] = useState<MenuItem[]>([]);
   const currentUser = useSelector((state: any) => state.authentication.user);
@@ -26,11 +22,7 @@ const Sidebar = (props: any) => {
   }, []);
 
   return (
-    <div className={`sidebar ${sidebarState === 'close' ? 'close' : ''}`}>
-      <div className="logo-details">
-        <i className='bx bx-menu' onClick={() => { setSidebarState(toggleState(sidebarState)); props.onSidebarToggle(toggleState(sidebarState)) }}></i>
-        <span className="logo_name">{sidebarData.title}</span>
-      </div>
+    <div className={`sidebar ${sidebar.isOpen? '' : 'close'}`}>
       <ul className="nav-links">
         {menus.map(menu => <SidebarMenu menu={menu} key={menu._id} />)}
         <li>
@@ -45,10 +37,10 @@ const Sidebar = (props: any) => {
               </div>
             </div>
             <div className="logout-div w-100 p-2">
-              <button className="btn btn-danger w-100" title="Logout from your session" onClick={() => setLogoutModalShow(true)}>
+              <Button variant="contained" color="error" sx={{width: '100%'}} title="Logout from your session" onClick={() => setLogoutModalShow(true)}>
                 <i className='bx bx-log-out' ></i>
                 <span>Logout</span>
-              </button>
+              </Button>
             </div>
 
           </div>

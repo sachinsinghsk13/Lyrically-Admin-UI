@@ -1,25 +1,25 @@
-import { Container, Nav } from "react-bootstrap";
-import Navbar from 'react-bootstrap/Navbar';
+import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
+import { useDispatch, } from "react-redux";
 
 export default function AppNavbar(props: any) {
+    const dispatch = useDispatch();
+    const handleSidebarToggle = () => {
+        dispatch({type: 'sidebar/toggle'});
+    }
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
-            <Container>
-                <Navbar.Brand href="#home">Lyrically <strong>ADMIN</strong></Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
-                    </Nav>
-                    <Nav>
-                        <Nav.Link href="#deets"><i className="bx bxs-bell"></i></Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <AppBar position="sticky" sx={{backgroundColor: '#212529'}}>
+            <Toolbar variant="dense">
+                <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={handleSidebarToggle}>
+                    <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" color="inherit" component="div">
+                    Lyrically
+                </Typography>
+                <Typography variant="h6" color="inherit" component="div" sx={{fontWeight: 'bold', px: 1}}>
+                    ADMIN
+                </Typography>
+            </Toolbar>
+        </AppBar>
     );
 }
