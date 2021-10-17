@@ -19,7 +19,7 @@ class AuthenticationService {
      */
     async login(credentials: LoginCredentials): Promise<boolean> {
         try {
-            let resp = await axios.post(`${Constants.BASE_URL}/admin-auth/login`, credentials);
+            let resp = await axios.post(`${Constants.BASE_URL}/admin/login`, credentials);
             // dispatch action to redux store
             store.dispatch({
                 type: 'authentication/loggedIn',

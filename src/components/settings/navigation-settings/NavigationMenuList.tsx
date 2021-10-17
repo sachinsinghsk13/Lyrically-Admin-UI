@@ -19,9 +19,9 @@ const NavigationMenuList = (props: any) => {
     const { enqueueSnackbar } = useSnackbar();
     /*  Fetch meneus from API */
     const fetchMenus = async () => {
-        let res = await axios.get(`${Constants.BASE_URL}/admin/webmenus`);
+        let res = await axios.get(`${Constants.BASE_URL}/webmenus`);
         if (res.status === 200)
-            setMenus(res.data);
+            setMenus(res.data.data);
     }
 
     /* Load menus when component mounts */
@@ -38,7 +38,7 @@ const NavigationMenuList = (props: any) => {
     const handleDelete = async (id: GridRowId) => {
         try {
             await confirm({ description: 'Menu item will be deleted permanenly', title: 'Delete Menu Item?', confirmationText: 'Delete', confirmationButtonProps: { variant: 'contained', color: 'error' } });
-            let resp = await axios.delete(`${Constants.BASE_URL}/admin/webmenus/${id}`);
+            let resp = await axios.delete(`${Constants.BASE_URL}/webmenus/${id}`);
             if (resp.status === 200) {
                 fetchMenus();
                 enqueueSnackbar('Menu Item Deleted', { variant: "success" });

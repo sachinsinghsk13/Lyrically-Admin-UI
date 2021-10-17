@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import store from './appstate/store';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
-import { authorizationTokenInterceptor } from './utils/http-interceptor';
+import { authorizationTokenInterceptor, unauthorizedRequestInterceptor } from './utils/http-interceptor';
 import { SnackbarProvider } from 'notistack';
 import { ConfirmProvider } from 'material-ui-confirm';
 setupHttpInterceptors();
@@ -27,4 +27,8 @@ reportWebVitals();
 
 function setupHttpInterceptors() {
   axios.interceptors.request.use(authorizationTokenInterceptor);
+  axios.interceptors.response.use((res) => {
+    console.log(res);
+    return res;
+  });
 }

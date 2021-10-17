@@ -41,7 +41,7 @@ const NavigationMenuForm = (props: any) => {
     const params: any = useParams();
     const { enqueueSnackbar } = useSnackbar();
     const loadData = async (id: string) => {
-        let resp = await axios.get(`${Constants.BASE_URL}/admin/webmenus/${params.id}`);
+        let resp = await axios.get(`${Constants.BASE_URL}/webmenus/${params.id}`);
         if (resp.status === 200) {
             setFormState({ type: 'update', value: resp.data });
         }
@@ -63,11 +63,11 @@ const NavigationMenuForm = (props: any) => {
         try {
             let resp;
             if (formState.type === 'create') {
-                resp = await axios.post(`${Constants.BASE_URL}/admin/webmenus`, values);
+                resp = await axios.post(`${Constants.BASE_URL}/webmenus`, values);
                 enqueueSnackbar('Menu Added', {variant: 'success'});
                 history.push('.');
             } else {
-                resp = await axios.put(`${Constants.BASE_URL}/admin/webmenus/${params.id}`, values)
+                resp = await axios.put(`${Constants.BASE_URL}/webmenus/${params.id}`, values)
                 enqueueSnackbar('Menu Updated', {variant: 'success'});
                 history.push('..');
             }
@@ -126,7 +126,6 @@ const NavigationMenuForm = (props: any) => {
                                             select
                                             margin="dense"
                                             fullWidth
-                                            value={1}
                                         >
                                             {Array.from(new Array(20).keys()).map(i => <MenuItem key={i} value={i + 1}>{i + 1}</MenuItem>)}
                                         </TextField>

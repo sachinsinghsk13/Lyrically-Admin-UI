@@ -13,9 +13,9 @@ const Sidebar = (props: any) => {
   const currentUser = useSelector((state: any) => state.authentication.user);
   useEffect(() => {
     const fetchMenus = async () => {
-      let menus = await axios.get(`${Constants.BASE_URL}/admin/webmenus`);
-      if (menus.status === 200) {
-        setMenus(menus.data);
+      let resp = await axios.get(`${Constants.BASE_URL}/webmenus`);
+      if (resp.status === 200) {
+        setMenus(resp.data.data);
       }
     };
     fetchMenus();
